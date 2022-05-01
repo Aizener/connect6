@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import Board from './components/board/Board.vue'
+import { io } from 'socket.io-client'
+
+const socket = io('ws://localhost:3002')
+console.log('socket', socket)
 </script>
 
 <template>
