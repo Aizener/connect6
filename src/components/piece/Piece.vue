@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { PropType } from '@vue/runtime-core';
+import { defineProps, PropType } from 'vue';
 import useState from './useState';
+
 const props = defineProps({
   idx1: {
     type: Number,
@@ -15,21 +16,22 @@ const props = defineProps({
     required: true
   },
   active: {
-    type: Object as PropType<Array<Number>>,
+    type: Object as PropType<Array<number>>,
     required: true
   }
 })
-const { item, idx1, idx2 } = props;
+
+const { idx1, idx2 } = props;
 
 const {
   getClassName,
-} = useState(props.active);
+} = useState();
 </script>
 
 <template>
   <div
     class="board-row--col"
-    :class="getClassName(item, idx1, idx2)"
+    :class="getClassName(props.active, props.item, idx1, idx2)"
     @click="$emit('trigger', idx1, idx2)"
   ></div>
 </template>

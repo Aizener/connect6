@@ -1,10 +1,9 @@
-export default (active: Array<Number>) => {
-  const getClassName = (item: number, idx: number, idx2: number) => {
-    console.log(111, active)
+export default () => {
+  const getClassName = (active: Array<number>, item: number, idx1: number, idx2: number) => {
     const classNames = [];
     classNames.push(['white', 'black'][item - 1])
     if (
-      active[0] === idx &&
+      active[0] === idx1 &&
       active[1] === idx2 &&
       item !== 0
     ) {
