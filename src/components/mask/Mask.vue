@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import useState from './useState'
+import { useMainStore } from '@/store'
+
+const mainStore = useMainStore()
 
 const {
   name,
@@ -9,7 +12,7 @@ const {
 </script>
 
 <template>
-  <div class="mask">
+  <div class="mask" v-if="!mainStore.user">
     <div class="mask-form">
       <input
         v-model="name"

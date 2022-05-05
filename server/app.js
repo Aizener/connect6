@@ -1,13 +1,12 @@
 var express = require('express');
 var path = require('path');
-var http = require('http');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var { Server } = require('socket.io');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var { installSocket } = require('./config/socket');
 
 var app = express();
 
@@ -20,20 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-var players = [], views = [];
-var httpServer= http.createServer(app);
-var io = new Server(httpServer, {
-    cors: { origin: '*' }
-})
-io.on('connection', () => {
-    console.log('onConnection!');
-    io.emit('createPlayer', {
-        id: 1,
-        name: 'abc',
-        type: 1
-    });
-})
-io.listen(3002);
+installSocket(app);
 
 module.exports = app;

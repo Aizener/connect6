@@ -1,0 +1,2 @@
+exports.players = [];
+exports.views = [];
