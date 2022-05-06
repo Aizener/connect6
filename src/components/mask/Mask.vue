@@ -17,6 +17,7 @@ const {
       <input
         v-model="name"
         type="text"
+        maxlength="10"
         placeholder="请输入您的名称"
       />
       <button :style="getStyle" @click="handleConfirm">确认</button>

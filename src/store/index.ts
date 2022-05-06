@@ -12,12 +12,16 @@ export const useMainStore = defineStore('main', () => {
   const updateViews = (newViews: Array<string>) => {
     views.value = newViews
   }
+  const updatePlayers = (newPlayers: Array<string>) => {
+    players.value = newPlayers
+  }
   
   return {
     user,
     views,
     players,
     updateUser,
-    updateViews
+    updateViews,
+    updatePlayers
   }
 })
